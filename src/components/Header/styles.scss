@@ -1,0 +1,53 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 200px;
+  font-family: 'Nunito', sans-serif;
+
+  .logo {
+    margin-right: 20px;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search-field {
+    background: none;
+    border-bottom: 1px solid #000;
+    width: 500px;
+
+    input {
+      background: none;
+      border: none;
+      outline: none;
+      width: 95%;
+      padding-bottom: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+
+       &::placeholder {
+        font-family: 'Nunito', sans-serif;
+        font-size: 13px;
+       }
+    }
+  }
+
+  .my-account {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: 13px;
+    color: #7a7a7a;
+
+    a {
+      text-decoration: none;
+      color: #7A7A7A;
+    }
+  }
+}

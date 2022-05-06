@@ -1,0 +1,138 @@
+.products-container {
+ width: 80%;
+ margin: 0 auto;
+ font-family: 'Nunito', sans-serif;
+ padding-bottom: 70px;
+
+ h2 {
+  font-weight: 900;
+  font-size: 20px;
+  position: relative;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 6%;
+    left: 0;
+    border-bottom: 4.3px solid #c0c0c0;
+  }
+ }
+
+ .products-carousel {
+  .rec.rec-dot {
+    height: 8px;
+    width: 8px;
+    background: #BDBDBD;
+    box-shadow: none;   
+  }
+
+  .rec.rec-dot_active {
+    background: #F8475F;
+    box-shadow: none;
+  }
+
+  .rec.rec-arrow {
+    background-color: transparent;
+    box-shadow: none;
+    color: #000;
+    opacity: 1;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .shoe {
+      height: fit-content;
+      width: 180px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 5px;
+
+      .name-product {
+        font-weight: 600;
+        font-size: 12px;
+        color: #7a7a7a;        
+      }
+
+      .space {
+        height: 16px;
+      }
+
+      .before-price {
+        font-weight: 400;
+        font-size: 12px;
+        color: #7a7a7a;
+        text-decoration: line-through;
+      }
+
+      .after-price {
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .parcel {
+        font-weight: 400;
+        font-size: 11px;
+        color: #7a7a7a;
+        margin-bottom: 8px;
+      }
+
+      .space-2 {
+        height: 16px;
+      }
+
+      .btn-buy {
+        height: 32px;
+        width: 125px;
+        border-radius: 5px;
+        background: #000;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+  }
+ }
+ @media(max-width: 768px) {
+  width: 100%;
+  padding-bottom: 40px;
+
+  h2 {
+    padding-left: 20px;
+
+    &::before {
+      left: 20px;
+    }
+  }
+
+  .products-carousel {
+    .rec.rec-slider-container {
+      margin: 0;
+    }
+
+    .product {
+      .info {
+        .btn-buy {
+          height: 50px;
+          width: 180px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+}

@@ -1,0 +1,37 @@
+.carousel-container {
+  width: 100%;
+
+  .rec.rec-carousel {
+    background-color: #000;
+  }
+  
+  .rec.rec-dot {
+    margin-top: -50px;
+    z-index: 20;
+    height: 10px;
+    width: 10px;
+    background: #BDBDBD;
+    box-shadow: none;   
+  }
+
+  .rec.rec-slider-container {
+    margin: 0;    
+  }
+
+  .rec.rec-item-wrapper {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: fit-content;
+    }
+  }
+  
+  .rec.rec-dot_active {
+    background: #F8475F;
+    box-shadow: none;
+  }
+  @media(max-width: 768px) {
+    
+  }
+}
