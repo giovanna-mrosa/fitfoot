@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from 'react-elastic-carousel'
-import socialImg from '../../assets/social-shoe.png'
-import sandalImg from '../../assets/chinela.png'
-import bootImg from '../../assets/bota.png'
-import beltImg from '../../assets/cinto.png'
 import starsImg from '../../assets/Rating.svg'
+
+import api from '../../services/api';
 
 import './styles.scss'
 
@@ -14,6 +12,21 @@ const breakPoints = [
 ]
 
 export function SectionProducts() {
+  const [products, setProducts] = useState()
+
+  function formatCurrency(price) {
+    return Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(price / 100)
+  }
+
+  async function getProducts() {
+    const response = await api.get('/products')
+    setProducts(response.data)
+  }
+
+  useEffect(() => {
+    getProducts()
+  }, [])
+
   return (
     <main className="products-container">
       <h2>Mais Vendidos</h2>
@@ -22,71 +35,30 @@ export function SectionProducts() {
         outerSpacing={0}
         breakPoints={breakPoints}
       >
-        <div className="product">
-          <img src={socialImg} alt="Social Shoes" className="shoe" />
-          <div className="info">
-            <p className="name-product">SAPATO FLOATER PRETO</p>
-            <div className="stars">              
-              <img src={starsImg} alt="Rating stars" className="star"/>              
+        {products?.map(product => (
+          <div className="product">
+            <img src={product.imageUrl} alt="Social Shoes" className="shoe" />
+            <div className="info">
+              <p className="name-product">{product.productName}</p>
+              <div className="stars">              
+                <img src={starsImg} alt="Rating stars" className="star"/>              
+              </div>
+              <p 
+                className={product.listPrice === null ? "before-price space" : "before-price"}
+              >
+                {product.listPrice && "de " + formatCurrency(product.listPrice)}
+              </p>
+              <p className="after-price">por {formatCurrency(product.price)}</p>
+              {product.installments.length === 0 
+                ? (<p className="space-2"></p>)
+                : product.installments.map(installment => (
+                  <p className="parcel" key={installment.quantity}>ou em {installment.quantity}x de {formatCurrency(installment.value)}</p>
+                ))
+              }              
+              <button className="btn-buy">COMPRAR</button>              
             </div>
-            <p className="before-price space"></p>
-            <p className="after-price">por R$ 259,90</p>
-            <p className="parcel">ou em 9x de R$ 28,87</p>
-            <button className="btn-buy">COMPRAR</button>
           </div>
-        </div>
-        <div className="product">
-          <img src={sandalImg} alt="Sandal" className="shoe" />
-          <div className="info">
-            <p className="name-product">SANDÁLIA LINHO BROWN</p>
-            <div className="stars">              
-              <img src={starsImg} alt="Rating stars" className="star"/>              
-            </div>
-            <p className="before-price">de R$ 299,00</p>
-            <p className="after-price">por R$ 199,00</p>
-            <p className="parcel">ou em 4x de R$ 49,75</p>
-            <button className="btn-buy">COMPRAR</button>
-          </div>
-        </div>
-        <div className="product">
-          <img src={bootImg} alt="Boots" className="shoe" />
-          <div className="info">
-            <p className="name-product">BOTA MUSTANG PRETO</p>
-            <div className="stars">              
-              <img src={starsImg} alt="Rating stars" className="star"/>              
-            </div>
-            <p className="before-price">de R$ 329,00</p>
-            <p className="after-price">por R$ 299,90</p>
-            <p className="parcel">ou em 10x de R$ 29,90</p>
-            <button className="btn-buy">COMPRAR</button>
-          </div>
-        </div>
-        <div className="product">
-          <img src={beltImg} alt="Belt" className="shoe" />
-          <div className="info">
-            <p className="name-product">CINTO SEMICROMO PRETO 40MM</p>
-            <div className="stars">              
-              <img src={starsImg} alt="Rating stars" className="star"/>              
-            </div>
-            <p className="before-price space"></p>
-            <p className="after-price">por R$ 79,90</p>
-            <p className="parcel space"></p>
-            <button className="btn-buy">COMPRAR</button>
-          </div>
-        </div>
-        <div className="product">
-          <img src={beltImg} alt="Belt" className="shoe" />
-          <div className="info">
-            <p className="name-product">CINTO SEMICROMO PRETO 40MM</p>
-            <div className="stars">              
-              <img src={starsImg} alt="Rating stars" className="star"/>              
-            </div>
-            <p className="before-price space"></p>
-            <p className="after-price">por R$ 79,90</p>
-            <p className="parcel space"></p>
-            <button className="btn-buy">COMPRAR</button>
-          </div>
-        </div>
+        ))}    
       </Carousel>
     </main>
   )
