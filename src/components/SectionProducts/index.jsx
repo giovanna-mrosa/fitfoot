@@ -36,7 +36,7 @@ export function SectionProducts() {
         breakPoints={breakPoints}
       >
         {products?.map(product => (
-          <div className="product">
+          <div className="product" key={product.productId}>
             <img src={product.imageUrl} alt="Social Shoes" className="shoe" />
             <div className="info">
               <p className="name-product">{product.productName}</p>

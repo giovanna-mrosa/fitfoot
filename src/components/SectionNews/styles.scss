@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 30px;
+  padding: 40px 30px;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   gap: 10px;
@@ -49,8 +49,41 @@
       outline: none;
       cursor: pointer;
     }
+
+    position: relative;
+
+    .error-box {
+      position: absolute;
+      font-size: 12px;
+      color: #cb0d0d;
+      left: 5px;
+      top: 55px;
+      display: flex;
+      gap: 10px;
+
+      .error-field {
+        width: 280px;
+      }
+    }
+
+    .error-mob {
+      text-align: left;
+      width: 100%;
+      height: 12px;
+      padding-left: 5px;
+      display: flex;
+      align-items: flex-start;
+      margin-top: -5px;
+
+      .error-field-mob {
+        color: #cb0d0d;
+        font-size: 11px;
+      }
+    }
   }
   @media(max-width: 768px) {
+    gap: 25px;
+
     .join {
       font-size: 28px;
     }
@@ -62,10 +95,12 @@
 
       .inpt {
         width: 100%;
+        height: 55px;
       }
 
       .btn-want {
         width: 100%;
+        height: 55px;
       }
     }
   }

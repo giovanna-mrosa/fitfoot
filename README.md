@@ -1,11 +1,12 @@
 ## Built With
 
-This is a personal study <a href="" target="_blank">FitFoot</a> which features some of my technical skills.<br/>
+This is a project for personal study named <a href="https://fitfoot.vercel.app/" target="_blank">FitFoot</a> which features some of my technical skills. It was based in a test from CoreBiz and uses their API.<br/>
 
 This project was built using these technologies.
 
 - React.js
 - SCSS
+- Axios
 - VsCode
 - Vercel
 
