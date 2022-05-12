@@ -62,7 +62,8 @@
       .name-product {
         font-weight: 600;
         font-size: 12px;
-        color: #7a7a7a;        
+        color: #7a7a7a;     
+        height: 16px;   
       }
 
       .space {
@@ -126,6 +127,10 @@
 
     .product {
       .info {
+        .name-product {
+          font-size: 11px;
+        }
+
         .btn-buy {
           height: 50px;
           width: 180px;
