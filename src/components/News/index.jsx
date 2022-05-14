@@ -4,7 +4,7 @@ import api from '../../services/api'
 
 import './styles.scss'
 
-export function SectionNews() {
+export function News() {
   const [emailError, setEmailError] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
@@ -49,7 +49,7 @@ export function SectionNews() {
             id="name" 
             className="inpt" 
             placeholder="Digite o seu nome"
-            autocomplete="off"
+            autoComplete="off"
             onChange={(e) => setName(e.target.value)}
           />
           <input 
@@ -58,7 +58,7 @@ export function SectionNews() {
             id="email" 
             className="inpt" 
             placeholder="Digite seu email"
-            autocomplete="off"
+            autoComplete="off"
             onChange={(e) => setEmail(e.target.value)}
           />
           <button className="btn-want" type="submit">Eu quero!</button>      

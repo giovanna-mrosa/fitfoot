@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Carousel from 'react-elastic-carousel'
-import starsImg from '../../assets/Rating.svg'
+import starImg from '../../assets/starFilled.svg'
+import starOutlineImg from '../../assets/starEmpty.svg'
 
 import api from '../../services/api';
 
 import './styles.scss'
+import { Link } from "react-router-dom";
 
 const breakPoints = [
   { width: 425, itemsToShow: 2, itemsToScroll: 2, showArrows: false, pagination: true },
@@ -27,6 +29,16 @@ export function SectionProducts() {
     getProducts()
   }, [])
 
+  function renderStars(stars) {
+    const response = [];
+    for (let i = 0; i < 5; i++) {
+      response.push(
+        <img height="10" width="10" src={i < stars ? starImg : starOutlineImg} alt="Estrelas" />
+      )
+    }
+    return response;
+  }
+
   return (
     <main className="products-container">
       <h2>Mais Vendidos</h2>
@@ -37,11 +49,13 @@ export function SectionProducts() {
       >
         {products?.map(product => (
           <div className="product" key={product.productId}>
-            <img src={product.imageUrl} alt="Social Shoes" className="shoe" />
+            <img key={product.productId} src={product.imageUrl} alt="Social Shoes" className="shoe" />
             <div className="info">
-              <p className="name-product">{product.productName}</p>
+              <Link to={{ pathname: `/product/${product.productId}` }}>
+                <p className="name-product">{product.productName}</p>
+              </Link>              
               <div className="stars">              
-                <img src={starsImg} alt="Rating stars" className="star"/>              
+                {renderStars(product.stars)}             
               </div>
               <p 
                 className={product.listPrice === null ? "before-price space" : "before-price"}

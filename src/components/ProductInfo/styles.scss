@@ -1,0 +1,211 @@
+main {
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+
+  .back {
+    padding-left: 50px;
+  }
+
+  .product-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 120px;
+    padding: 10px 120px 100px 120px;
+  
+    .images {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+  
+      .big-shoe {
+        width: 100%;
+        height: fit-content;
+      }
+  
+      .small-images {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+  
+        .small-shoe {
+          width: 22%;
+          height: fit-content;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    .rec.rec-carousel-wrapper {
+      .shoe-mob {
+        height: fit-content;
+        width: 100%;
+      }
+
+      .rec.rec-pagination {
+        .rec.rec-dot {
+          width: 12px;
+          height: 12px;
+          background-color: #BDBDBD;
+          box-shadow: none;
+        }
+
+        .rec.rec-dot_active {
+          width: 12px;
+          height: 12px;
+          background-color: #F8475F;
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+  
+    .content-info {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 10px;
+  
+      .product-name {
+        font-weight: 600;
+        font-size: 28px;
+      }
+  
+      .description {
+        font-weight: 600;
+        font-size: 16px;
+        color: #7a7a7a;
+      }
+  
+      .prices {
+        margin: 10px 0;
+  
+        .full-price {
+          font-size: 18px;
+          color: #7a7a7a;
+          text-decoration: line-through;
+        }
+  
+        .promotion-price {
+          display: flex;
+          align-items: flex-end;
+          gap: 20px;
+  
+          .price-off {
+            font-weight: 700;
+            font-size: 28px;
+          }
+  
+          .parcel {
+            font-size: 14px;
+            color: #7a7a7a;
+            margin-bottom: 5px;
+  
+          }
+        }
+      }
+  
+      .quant-buy {
+        display: flex;
+        gap: 20px;
+  
+        .quantity-box {
+          display: flex;
+  
+          .minus, .plus {
+            height: 38px;
+            width: 38px;
+            font-size: 18px;
+            font-weight: 700;
+            border: 1px solid #fff;
+            background-color: #f6f5f5;
+            cursor: pointer;
+          }
+  
+          .minus {
+            border-radius: 5px 0 0 5px;
+          }
+  
+          .plus {
+            border-radius: 0 5px 5px 0;
+          }
+  
+          .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 38px;
+            width: 64px;
+            font-size: 18px;
+            font-weight: 700;
+            border: 1px solid #fff;
+            background-color: #f6f5f5;
+          }
+        }
+  
+        .button-buy {
+          height: 38px;
+          width: 140px;
+          font-size: 12px;
+          font-weight: 700;
+          border: 1px solid #fff;
+          outline: none;
+          background-color: #000;
+          color: #fff;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  @media(max-width: 768px) {
+    .back {
+      padding-left: 30px;
+    }
+
+    .product-container {
+      flex-direction: column;
+      padding: 10px 40px 100px 40px;
+      gap: 60px;
+      
+      .content-info {
+        width: 100%;
+
+        .quant-buy {
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+
+          .quantity-box {
+            width: 100%;
+            .quantity {
+              height: 60px;
+              width: 50%;
+              font-size: 24px;
+            }
+            .minus, .plus {
+              height: 60px;
+              width: 25%;
+              font-size: 24px;
+            }
+          }
+
+          .button-buy {
+            height: 60px;
+            width: 100%;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
