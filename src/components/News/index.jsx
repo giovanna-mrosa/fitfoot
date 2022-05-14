@@ -28,10 +28,11 @@ export function News() {
       name    
     }
 
-    if (validator.isEmail(email) && name.length >= 0) {
-      console.log('name', name)
-      console.log('email', email)
+    if (validator.isEmail(email) && name.length >= 0) {      
       await api.post('/newsletter', body)
+      console.log('Success')
+      setEmail('')
+      setName('')
     } else {
       console.log('error')
     }
@@ -51,6 +52,7 @@ export function News() {
             placeholder="Digite o seu nome"
             autoComplete="off"
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
           <input 
             type="email" 
@@ -60,6 +62,7 @@ export function News() {
             placeholder="Digite seu email"
             autoComplete="off"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <button className="btn-want" type="submit">Eu quero!</button>      
           <div className="error-box">
