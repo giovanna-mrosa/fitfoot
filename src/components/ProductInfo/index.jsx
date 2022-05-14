@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import starImg from '../../assets/starFilled.svg'
 import starOutlineImg from '../../assets/starEmpty.svg'
 import backImg from '../../assets/arrow-back.svg'
 import Carousel from 'react-elastic-carousel'
+import { CounterCartContext } from '../../hooks/useItems'
 
 import api from '../../services/api';
 
@@ -12,7 +13,8 @@ import './styles.scss'
 
 function ProductInfo() {
   const [product, setProduct] = useState()
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(1)
+  const [countCart, setCountCart] = useContext(CounterCartContext)
 
   function formatCurrency(price) {
     return Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(price / 100)
@@ -49,8 +51,12 @@ function ProductInfo() {
       setCounter(count => count - 1)
     } else {
       setCounter(1)
-    }
-    
+    }    
+  }
+
+  function handleBuy() {
+    setCountCart(countCart + counter)
+    setCounter(1)
   }
 
   return (
@@ -147,7 +153,7 @@ function ProductInfo() {
                   <p className='quantity'>{counter}</p>
                   <button className='plus' onClick={increase}>+</button>
                 </div>
-                <button className='button-buy'>COMPRAR</button>
+                <button className='button-buy' onClick={handleBuy}>COMPRAR</button>
               </div>
             </div>
           </>

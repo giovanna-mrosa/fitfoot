@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useContext } from "react";
 import logoImg from '../../assets/logo.svg'
 import searchIcon from '../../assets/search-icon.svg'
 import userIcon from '../../assets/user-logo.svg'
 import cartIcon from'../../assets/cart-icon.svg'
+import { CounterCartContext } from '../../hooks/useItems'
 
 import './styles.scss'
 
 export function Header() {
+  const [countCart] = useContext(CounterCartContext);
+
   return (
     <header>
       <div className="header-content">
@@ -28,8 +31,13 @@ export function Header() {
             Minha Conta
           </a>
         </div>
-        <a href="#">
+        <a href="#" className="cart-container">
           <img src={cartIcon} alt="Cart Icon" />
+          {countCart > 0 ? (
+            <p className="items-cart">{countCart}</p>
+          ) : (
+            <div className="empty-cart"></div>
+          )}
         </a>
       </div>
     </header>

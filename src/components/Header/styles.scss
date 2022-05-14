@@ -3,8 +3,21 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px 200px;
+  padding: 0 200px;
   font-family: 'Nunito', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 3;
+  height: 85px;
+  box-shadow: 0px 0px 15px 0px #0000001A;
+
+ .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   .logo {
     margin-right: 20px;
@@ -50,4 +63,31 @@ header {
       color: #7A7A7A;
     }
   }
+
+  .cart-container {
+    display: flex;
+    gap: 5px;
+    text-decoration: none;
+    align-items: center;
+
+    .items-cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      background: #F8475F;
+      border-radius: 50%;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      color: #fff;
+      width: 16px;
+      height: 16px;     
+    }
+
+    .empty-cart {
+      width: 16px;
+    }
+  }
+ }
 }

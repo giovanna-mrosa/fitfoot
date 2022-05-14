@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Carousel from 'react-elastic-carousel'
 import starImg from '../../assets/starFilled.svg'
 import starOutlineImg from '../../assets/starEmpty.svg'
@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 import './styles.scss'
 import { Link } from "react-router-dom";
+import { CounterCartContext } from "../../hooks/useItems";
 
 const breakPoints = [
   { width: 425, itemsToShow: 2, itemsToScroll: 2, showArrows: false, pagination: true },
@@ -14,6 +15,7 @@ const breakPoints = [
 ]
 
 export function SectionProducts() {
+  const [countCart, setCountCart] = useContext(CounterCartContext);
   const [products, setProducts] = useState()
 
   function formatCurrency(price) {
@@ -37,6 +39,10 @@ export function SectionProducts() {
       )
     }
     return response;
+  }
+
+  function handleBuy() {
+    setCountCart(countCart + 1)
   }
 
   return (
@@ -69,7 +75,7 @@ export function SectionProducts() {
                   <p className="parcel" key={installment.quantity}>ou em {installment.quantity}x de {formatCurrency(installment.value)}</p>
                 ))
               }              
-              <button className="btn-buy">COMPRAR</button>              
+              <button className="btn-buy" onClick={handleBuy}>COMPRAR</button>              
             </div>
           </div>
         ))}    
