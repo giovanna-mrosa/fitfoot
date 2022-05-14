@@ -24,7 +24,7 @@ export function HeaderMob() {
           <span></span>
           <span></span>
         </div>
-        <img src={logoImg} alt="Logo" className="logo-mob" />
+        <a href="/"><img src={logoImg} alt="Logo" className="logo-mob" /></a>
         <a href="#">
           <img src={cartIcon} alt="Cart Icon" className="cart" />
         </a>

@@ -12,7 +12,7 @@ export function Header() {
   return (
     <header>
       <div className="header-content">
-        <img src={logoImg} alt="Logo fitfoot" className="logo" />
+        <a href="/"><img src={logoImg} alt="Logo fitfoot" className="logo" /></a>
         <div className="search-field">
           <input 
             type="search" 
