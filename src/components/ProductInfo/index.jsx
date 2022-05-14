@@ -12,7 +12,7 @@ import './styles.scss'
 
 function ProductInfo() {
   const [product, setProduct] = useState()
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   function formatCurrency(price) {
     return Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(price / 100)
@@ -45,10 +45,10 @@ function ProductInfo() {
   }
 
   function decrease() {
-    if (counter > 0) {
+    if (counter > 1) {
       setCounter(count => count - 1)
     } else {
-      setCounter(0)
+      setCounter(1)
     }
     
   }
