@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Carousel from 'react-elastic-carousel'
 import starImg from '../../assets/starFilled.svg'
 import starOutlineImg from '../../assets/starEmpty.svg'
+import offImg from '../../assets/flag-off.svg'
 
 import api from '../../services/api';
 
@@ -55,6 +56,9 @@ export function SectionProducts() {
       >
         {products?.map(product => (
           <div className="product" key={product.productId}>
+            {product.listPrice !== null 
+              && <img src={offImg} alt="Tag off" className="tag-off"/>
+            }
             <img key={product.productId} src={product.imageUrl} alt="Social Shoes" className="shoe" />
             <div className="info">
               <Link to={{ pathname: `/product/${product.productId}` }}>

@@ -46,6 +46,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    .tag-off {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 65px;
+      height: fit-content;
+    }
 
     .shoe {
       height: fit-content;

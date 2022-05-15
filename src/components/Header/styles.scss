@@ -18,6 +18,7 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 
   .logo {
     margin-right: 20px;
@@ -88,6 +89,68 @@ header {
     .empty-cart {
       width: 16px;
     }
+  }
+
+  .mini-cart {
+    background-color: #f2f2f2;
+    padding: 20px;
+    position: absolute;
+    right: 0px;
+    top: 45px;
+    border-radius: 2px;
+    font-family: 'Nunito', sans-serif;
+
+    transition: all ease 0.8s;
+
+    .mini-cart-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      gap: 20px;
+
+      &::before {
+        content: '';
+        background-color: #f2f2f2;
+        width: 20px;
+        height: 20px;
+        clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+        position: absolute;
+        top: -40px;
+        right: -2px;
+      }
+
+      .clear-cart {
+        background: none;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background: #F8475F;
+        color: #fff;
+        height: 35px;
+        width: 140px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .checkout {
+        border-radius: 5px;
+        background: #000;
+        color: #fff;
+        height: 35px;
+        width: 140px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .mini-cart-hidden {
+    opacity: 0;
   }
  }
 }

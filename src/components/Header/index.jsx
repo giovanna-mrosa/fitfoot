@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import logoImg from '../../assets/logo.svg'
 import searchIcon from '../../assets/search-icon.svg'
 import userIcon from '../../assets/user-logo.svg'
@@ -10,7 +10,12 @@ import { CounterCartContext } from '../../hooks/useItems'
 import './styles.scss'
 
 export function Header() {
-  const [countCart] = useContext(CounterCartContext);
+  const [countCart, setCountCart] = useContext(CounterCartContext);
+  const [toggle, setToggle] = useState(false)
+
+  function handleToggle() {
+    setToggle(!toggle)
+  }
 
   return (
     <header>
@@ -31,7 +36,7 @@ export function Header() {
             Minha Conta
           </a>
         </div>
-        <a href="#" className="cart-container">
+        <a href="#" className="cart-container" onClick={handleToggle}>
           <img src={cartIcon} alt="Cart Icon" />
           {countCart > 0 ? (
             <p className="items-cart">{countCart}</p>
@@ -39,6 +44,22 @@ export function Header() {
             <div className="empty-cart"></div>
           )}
         </a>
+        <div 
+          className={toggle === true ? "mini-cart" : "mini-cart mini-cart-hidden"}
+        >
+            <div className="mini-cart-content">
+            {countCart > 0 ? (
+              <>
+                <button className="clear-cart" onClick={() => setCountCart(0)}>
+                  ESVAZIAR CARRINHO
+                </button>
+                <button className="checkout">FINALIZAR COMPRA</button>
+              </>
+              ) : (
+                <p>Carrinho Vazio</p>
+              )}
+            </div>          
+        </div>
       </div>
     </header>
   )

@@ -6,14 +6,28 @@ import searchIcon from '../../assets/search-icon.svg'
 import userIcon from '../../assets/user-logo.svg'
 import { CounterCartContext } from '../../hooks/useItems'
 
+
 import './styles.scss'
 
 export function HeaderMob() {
-  const [countCart] = useContext(CounterCartContext);
+  const [countCart, setCountCart] = useContext(CounterCartContext);
   const [toggle, setToggle] = useState(false)
+  const [toggleCart, setToggleCart] = useState(false)
+
+  function handleToggleCart() {
+    setToggleCart(!toggleCart)
+
+    if (toggle === true) {
+      setToggle(false)
+    }
+  }
 
   function handleToggle() {
     setToggle(!toggle)
+
+    if (toggleCart === true) {
+      setToggleCart(false)
+    }
   }
 
   return (
@@ -28,13 +42,29 @@ export function HeaderMob() {
             <span></span>
           </div>
           <a href="/"><img src={logoImg} alt="Logo" className="logo-mob" /></a>
-          <a href="#" className="cart-container-mob">
+          <a href="#" className="cart-container-mob" onClick={handleToggleCart}>
             <img src={cartIcon} alt="Cart Icon" className="cart" />
             {countCart > 0 ? (
               <p className="items-cart-mob">{countCart}</p>
             ) : (
               <div className="empty-cart-mob"></div>
             )}
+            <div 
+              className={toggleCart === true ? "mini-cart-mob" : "mini-cart-mob mini-cart-mob-hidden"}
+            >
+              <div className="mini-cart-content-mob">
+              {countCart > 0 ? (
+                <>
+                  <button className="clear-cart-mob" onClick={() => setCountCart(0)}>
+                    ESVAZIAR CARRINHO
+                  </button>
+                  <button className="checkout-mob">FINALIZAR COMPRA</button>
+                </>
+                ) : (
+                  <p>Carrinho Vazio!</p>
+                )}
+              </div>          
+            </div>
           </a>
         </div>
         <div className="search-box">
@@ -51,7 +81,7 @@ export function HeaderMob() {
               <img src={userIcon} alt="User icon" />
               Minha Conta
             </a>
-        </div>
+        </div>        
       </div>
     </header>
   )
