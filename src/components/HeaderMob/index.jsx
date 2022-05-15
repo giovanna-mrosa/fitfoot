@@ -15,34 +15,36 @@ export function HeaderMob() {
   }
 
   return (
-    <header className="header-mob-container">
-      <div className="header-mob-container-content">
-        <div
-          className={toggle === true ? "burger-menu active" : "burger-menu"}    onClick={handleToggle}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <a href="/"><img src={logoImg} alt="Logo" className="logo-mob" /></a>
-        <a href="#">
-          <img src={cartIcon} alt="Cart Icon" className="cart" />
-        </a>
-      </div>
-      <div className="search-box">
-        <input 
-          type="search" 
-          ame="search" 
-          className="search-inpt" 
-          placeholder="O que você está procurando?"
-        />
-        <img src={searchIcon} alt="Search icon" className="search-icon" />
-      </div>
-      <div className={toggle === true ? "menu-box" : "menu-box hidden"}>
-          <a href="#" className="my-account-link">
-            <img src={userIcon} alt="User icon" />
-            Minha Conta
+    <header className="header-mob">
+      <div className="header-mob-container">
+        <div className="header-mob-container-content">
+          <div
+            className={toggle === true ? "burger-menu active" : "burger-menu"}    onClick={handleToggle}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <a href="/"><img src={logoImg} alt="Logo" className="logo-mob" /></a>
+          <a href="#">
+            <img src={cartIcon} alt="Cart Icon" className="cart" />
           </a>
+        </div>
+        <div className="search-box">
+          <input
+            type="search"
+            ame="search"
+            className="search-inpt"
+            placeholder="O que você está procurando?"
+          />
+          <img src={searchIcon} alt="Search icon" className="search-icon" />
+        </div>
+        <div className={toggle === true ? "menu-box" : "menu-box hidden"}>
+            <a href="#" className="my-account-link">
+              <img src={userIcon} alt="User icon" />
+              Minha Conta
+            </a>
+        </div>
       </div>
     </header>
   )
