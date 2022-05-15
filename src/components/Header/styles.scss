@@ -108,6 +108,7 @@ header {
       flex-direction: column;
       position: relative;
       gap: 20px;
+      align-items: center;
 
       &::before {
         content: '';
@@ -118,6 +119,11 @@ header {
         position: absolute;
         top: -40px;
         right: -2px;
+      }
+
+      p {
+        font-size: 12px;
+        word-wrap: break-word;
       }
 
       .clear-cart {

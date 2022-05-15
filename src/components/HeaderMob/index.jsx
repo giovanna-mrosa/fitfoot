@@ -55,6 +55,11 @@ export function HeaderMob() {
               <div className="mini-cart-content-mob">
               {countCart > 0 ? (
                 <>
+                  {countCart > 1 ? (
+                     <p>{"Você tem " + countCart + " itens no Carrinho!"}</p>
+                  ) : (
+                    <p>{"Você tem " + countCart + " item no Carrinho!"}</p>
+                  )}                  
                   <button className="clear-cart-mob" onClick={() => setCountCart(0)}>
                     ESVAZIAR CARRINHO
                   </button>
