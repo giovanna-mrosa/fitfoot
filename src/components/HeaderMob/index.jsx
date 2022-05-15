@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logoImg from '../../assets/logo.svg'
 import cartIcon from '../../assets/cart-icon.svg'
 import searchIcon from '../../assets/search-icon.svg'
 import userIcon from '../../assets/user-logo.svg'
+import { CounterCartContext } from '../../hooks/useItems'
 
 import './styles.scss'
 
 export function HeaderMob() {
+  const [countCart] = useContext(CounterCartContext);
   const [toggle, setToggle] = useState(false)
 
   function handleToggle() {
@@ -26,8 +28,13 @@ export function HeaderMob() {
             <span></span>
           </div>
           <a href="/"><img src={logoImg} alt="Logo" className="logo-mob" /></a>
-          <a href="#">
+          <a href="#" className="cart-container-mob">
             <img src={cartIcon} alt="Cart Icon" className="cart" />
+            {countCart > 0 ? (
+              <p className="items-cart-mob">{countCart}</p>
+            ) : (
+              <div className="empty-cart-mob"></div>
+            )}
           </a>
         </div>
         <div className="search-box">
