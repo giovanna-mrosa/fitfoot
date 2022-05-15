@@ -59,7 +59,14 @@ export function SectionProducts() {
             {product.listPrice !== null 
               && <img src={offImg} alt="Tag off" className="tag-off"/>
             }
-            <img key={product.productId} src={product.imageUrl} alt="Social Shoes" className="shoe" />
+            <Link to={{ pathname: `/product/${product.productId}` }}>
+              <img 
+                key={product.productId} 
+                src={product.imageUrl} 
+                alt="Social Shoes" 
+                className="shoe" 
+              />
+            </Link>            
             <div className="info">
               <Link to={{ pathname: `/product/${product.productId}` }}>
                 <p className="name-product">{product.productName}</p>
